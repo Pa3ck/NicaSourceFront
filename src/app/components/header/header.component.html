@@ -1,3 +1,4 @@
+<p-toast [style]="{marginTop: '80px'}"></p-toast>
 <div class="header" role="banner"
     fxLayout="row" fxLayoutAlign="space-between center">
 
@@ -8,6 +9,7 @@
         <span>COVID-19</span>
     </div>
     
-
-    <button pButton type="button" icon="pi pi-refresh" class="ui-button-raised ui-button-secondary"></button>
+    
+    <button style="margin-right: 5px;" pButton type="button" icon="pi pi-refresh" class="ui-button-raised ui-button-secondary"
+            (click)="syncData()"></button>
 </div>

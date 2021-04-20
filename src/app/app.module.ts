@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -41,7 +42,8 @@ import { CountryDataComponent } from './components/country-data/country-data.com
     FlexLayoutModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    BrowserAnimationsModule
   ],
   providers: [
     StyleUtils,

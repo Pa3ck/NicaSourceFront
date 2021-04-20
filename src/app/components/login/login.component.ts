@@ -2,11 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/components/common/messageservice';
 
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.scss'],
+  providers: [MessageService]
 })
 export class LoginComponent implements OnInit {
 
@@ -15,7 +17,8 @@ export class LoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private messageService: MessageService
   ) { }
 
   ngOnInit() {
@@ -24,8 +27,8 @@ export class LoginComponent implements OnInit {
 
   createForm() {
     this.loginForm = this.fb.group({
-      email: ['test@mail.com', [Validators.required, Validators.email]],
-      password: ['123', [Validators.required]]
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required]]
     });
   }
 
@@ -34,12 +37,12 @@ export class LoginComponent implements OnInit {
     this.authService.login(user.email, user.password)
     .subscribe((resp: any) => {
       if (resp.ok) {
-        console.log('sign in exitoso');
+        console.log('log in exitoso');
         this.authService.storeUserToken(resp.token);
         this.router.navigate(['/home']);
       }
     }, (err) => {
-      console.log(err.message);
+      this.messageService.add({severity: 'error', summary: 'Login Error', detail: err.error.message });
     });
   }
 
