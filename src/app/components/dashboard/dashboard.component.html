@@ -13,8 +13,10 @@
 <div *ngIf="!noData && data.length > 0">
     <h3> Covid-19 Statistics </h3>
 
+    Buscar País: <input type="text" pInputText [(ngModel)]="search" (ngModelChange)="filter($event)"/>
+
     <div fxLayout="row wrap" fxLayoutAlign="start start" >
-        <div class="card" *ngFor="let item of data"
+        <div class="card" *ngFor="let item of filterData"
             fxFlex="50" 
             fxFlex.lg="20"
             fxFlex.gt-sm="25"

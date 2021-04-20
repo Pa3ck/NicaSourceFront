@@ -10,7 +10,9 @@ export class DashboardComponent implements OnInit {
 
   noData = false;
   loading = false;
-  data: any = [];
+  data: any[] = [];
+  filterData: any[] = [];
+  search: string;
 
   constructor(
     private statsService: StatisticsService
@@ -42,10 +44,16 @@ export class DashboardComponent implements OnInit {
       } else {
         this.noData = false;
         this.data = resp.data;
+        this.filterData = this.data;
       }
     }, (err: any) => {
       console.log(err);
     });
+  }
+
+  filter(ev: string) {
+    this.filterData = this.data.filter((stat: CountryStats) => stat.country.toUpperCase().includes(ev.toUpperCase()));
+    console.log(this.filterData);
   }
 
 }
