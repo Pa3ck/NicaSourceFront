@@ -4,12 +4,19 @@
 
     <div id="loginBox" fxLayout="column" fxLayoutAlign="space-evenly center">
         <h3>Login</h3>
-        <span>Email</span>
-        <input type="text" pInputText />
-        <span>Password</span>
-        <input type="password" pInputText />
+        <form [formGroup]="loginForm" (ngSubmit)="login()">
 
-        <p-button label="Log In"></p-button>
+            <div fxLayout="column" fxLayoutAlign="space-evenly center" fxLayoutGap="5px">
+
+                <span>Email</span>
+                <input type="email" pInputText formControlName="email" />
+                <span>Password</span>
+                <input type="password" pInputText formControlName="password" />
+
+                <button pButton [disabled]="!loginForm.valid" type="submit" label="Login" ></button>  
+            </div>
+            
+        </form>
 
         <button pButton type="button" label="Sign Up" class="ui-button-rounded ui-button-warning"
             [routerLink]="['/signin']">

@@ -1,0 +1,73 @@
+
+<p-card>
+    <p-header>
+        <div class="title">{{data.country}}</div>
+        <span class="continent">{{data.continent}}</span>
+    </p-header>
+
+
+    <span>Population: </span> {{data.population}} <br>
+
+    <div *ngIf="!edit">
+        <span class="subtitle">Cases</span>
+        <div class="subData">
+            <span class="active">Active: </span> {{data.cases.active}} <br>
+            <span class="recovered">Recovered: </span> {{data.cases.recovered}} <br>
+            <span class="total">total: </span> {{data.cases.total}} <br>
+        </div>
+
+        <span class="subtitle">Deaths</span>
+        <div class="subData">
+            <span class="total">total: </span> {{data.deaths.total}} <span *ngIf=!data.deaths.total>No data</span> <br>
+        </div>
+
+        <span class="subtitle">Tests</span>
+        <div class="subData">
+            <span class="total">total: </span> {{data.tests.total}} <span *ngIf=!data.tests.total>No data</span><br>
+        </div>
+    </div>
+
+    <div *ngIf="edit">
+        <form [formGroup]="statsForm"> 
+            <span class="subtitle">Cases</span>
+            <div class="subData">
+                <span class="active">Active: </span> 
+                <input type="text" size="10" pInputText formControlName="activeCases" /> <br>
+                <span class="recovered">Recovered: </span> 
+                <input type="text" size="10" pInputText formControlName="recoveredCases" /> <br>
+                <span class="total">total: </span> {{data.cases.total}} <br>
+            </div>
+
+            <span class="subtitle">Deaths</span>
+            <div class="subData">
+                <span class="total">total: </span> 
+                <input type="text" size="10" pInputText formControlName="deaths" /> <br>
+            </div>
+
+            <span class="subtitle">Tests</span>
+            <div class="subData">
+                <span class="total">total: </span>
+                <input type="text" size="10" pInputText formControlName="tests" /> <br>
+            </div>
+        </form>
+        
+    </div>
+
+    <div class="buttons">
+        <button *ngIf="!edit" pButton type="button" icon="pi pi-pencil" class="ui-button-raised ui-button-secondary"
+            (click)="edit = true">
+        </button>
+
+        <button *ngIf="edit" pButton type="button" icon="pi pi-save" class="ui-button-raised"
+            (click)="save()" [disabled]="!statsForm.valid">
+        </button>
+
+        <button *ngIf="edit" pButton type="button" icon="pi pi-times" class="ui-button-raised ui-button-warning"
+            (click)="edit = false">
+        </button>
+    </div>
+    
+
+    
+    
+</p-card>

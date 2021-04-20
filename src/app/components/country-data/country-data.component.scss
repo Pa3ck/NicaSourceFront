@@ -1,0 +1,45 @@
+::ng-deep .ui-card-header{
+    margin: 10px 0 0 10px;
+    color: #2d5da8;
+}
+
+.subtitle{
+    font-weight: 800;
+    margin-bottom: 5px;
+}
+
+.title {
+    font-weight: 800;
+    font-size: large;
+}
+.continent {
+    font-weight: 800;
+    color: gray;
+    font-size: small;
+}
+
+.active {
+    color: #781a21;
+    font-weight: 800;
+}
+
+.recovered {
+    color: #1e753a;
+    font-weight: 800;
+}
+
+.total {
+    font-weight: 800;
+}
+
+.subData span{
+    margin-left: 20px;
+} 
+
+.buttons {
+    text-align: right;
+}
+
+.buttons button {
+    margin-right: 5px;
+}

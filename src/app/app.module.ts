@@ -20,6 +20,7 @@ import {StyleUtils, StylesheetMap,
   FlexOrderStyleBuilder} from '@angular/flex-layout';
 import { HeaderComponent } from './components/header/header.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { CountryDataComponent } from './components/country-data/country-data.component';
 
 
 
@@ -30,7 +31,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     SigninComponent,
     HomeComponent,
     HeaderComponent,
-    DashboardComponent
+    DashboardComponent,
+    CountryDataComponent
   ],
   imports: [
     BrowserModule,

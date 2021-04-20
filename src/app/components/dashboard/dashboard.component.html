@@ -1,1 +1,30 @@
-<p>dashboard works!</p>
+<div *ngIf="noData">
+    <h3>There's no data, click on the sync Button</h3>
+    <button pButton type="button" icon="pi pi-refresh" class="ui-button-raised ui-button-secondary"
+        (click)="syncData()">
+    </button>
+
+    <div *ngIf="loading">
+        <i class="pi pi-spin pi-spinner"></i>
+    </div>
+</div>
+
+
+<div *ngIf="!noData && data.length > 0">
+    <h3> Covid-19 Statistics </h3>
+
+    <div fxLayout="row wrap" fxLayoutAlign="start start" >
+        <div class="card" *ngFor="let item of data"
+            fxFlex="50" 
+            fxFlex.lg="20"
+            fxFlex.gt-sm="25"
+            fxFlex.gt-xs="33">
+            <app-country-data [data]="item"></app-country-data>
+        </div>
+    </div>
+    
+    
+
+    
+    
+</div>

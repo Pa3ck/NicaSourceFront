@@ -3,8 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import {InputTextModule} from 'primeng/inputtext';
 import {ButtonModule} from 'primeng/button';
-import { SigninComponent } from '../components/signin/signin.component';
-import { HomeComponent } from '../components/home/home.component';
+import {CardModule} from 'primeng/card';
 
 
 
@@ -13,11 +12,13 @@ import { HomeComponent } from '../components/home/home.component';
   imports: [
     CommonModule,
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    CardModule
   ],
   exports: [
     InputTextModule,
-    ButtonModule
+    ButtonModule,
+    CardModule
   ]
 })
 export class PrimeNGModule { }

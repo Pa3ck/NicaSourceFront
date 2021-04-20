@@ -10,6 +10,7 @@ const URL = environment.baseUrl;
 export class AuthService {
 
   tokenKey = 'JWT';
+  token: string = undefined;
 
   constructor(
     private http: HttpClient
@@ -19,6 +20,13 @@ export class AuthService {
   storeUserToken(token: any) {
     // console.log('storeUserCredentials ', credentials);
     localStorage.setItem(this.tokenKey, token);
+    this.token = token;
+
+  }
+
+  loadUserToken() {
+    this.token = localStorage.getItem(this.tokenKey);
+    console.log('tokenLoaded');
   }
 
   login(email: string, password: string) {
@@ -29,5 +37,9 @@ export class AuthService {
   signIn(email: string, password: string) {
     const data = {email, password};
     return this.http.post(`${URL}auth/signup`, data);
+  }
+
+  clearToken() {
+    localStorage.removeItem(this.tokenKey);
   }
 }
